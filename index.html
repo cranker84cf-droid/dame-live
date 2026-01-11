@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dame Live</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="title">
+      <div class="h1">Dame Live</div>
+      <div class="sub" id="roomInfo">…</div>
+    </div>
+    <div class="right">
+      <button id="resetBtn" class="btn btnGhost">Neu</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <div class="status" id="status">Verbinde…</div>
+      <div class="presence" id="presence">Spieler: –</div>
+      <div class="hint" id="hint">Tippe eine Figur an, dann ein Ziel.</div>
+
+      <div id="rulesBox" class="rules hidden">
+        <div class="rulesTitle">Regeln (nur Chris)</div>
+
+        <label><input type="checkbox" id="r_mustCapture"> Schlagpflicht</label>
+        <label><input type="checkbox" id="r_penalty"> Strafe: Stein fliegt raus</label>
+
+        <label>
+          Mehrfachschlag:
+          <select id="r_multi">
+            <option value="optional">optional</option>
+            <option value="forced">Pflicht</option>
+          </select>
+        </label>
+
+        <label><input type="checkbox" id="r_flyMove"> Dame fliegend ziehen</label>
+        <label><input type="checkbox" id="r_flyCap"> Dame fliegend schlagen</label>
+
+        <label>
+          Rückwärts schlagen:
+          <select id="r_backCap">
+            <option value="kingOnly">nur Dame</option>
+            <option value="all">auch normale</option>
+          </select>
+        </label>
+
+        <button id="saveRulesBtn" class="btn">Speichern</button>
+      </div>
+    </section>
+
+    <section class="boardCard">
+      <div id="board" class="board"></div>
+      <div class="links">
+        <div class="linkRow">
+          <div class="linkLabel">Chris (Weiß)</div>
+          <code id="linkChris"></code>
+        </div>
+        <div class="linkRow">
+          <div class="linkLabel">Sandrina (Schwarz)</div>
+          <code id="linkSandrina"></code>
+        </div>
+        <div class="linkHint">Tipp: Öffne direkt /chris oder /sandrina für Short-Links.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
